@@ -1,0 +1,38 @@
+.container{
+    margin-top: 50px;
+}
+.thumbnail img{
+    width: 100px;
+}
+.image-container img{
+    width: 300px;
+}
+.container2{
+    padding-top: 4em;
+}
+h1{
+    color: #F28482;
+}
+span{
+    color: #61B072;
+}
+.form{
+    margin-top: 4em;
+}
+input{
+    width: 40px;
+}
+.cantidad{
+    margin-top: 20px;
+    justify-content: center;
+}
+.destacados{
+    text-align: center;
+    margin-top: 3em;
+    margin-bottom: 4em;
+    
+}
+.destacados h2{
+    font-size: 35px;
+    color: #F28482;
+}

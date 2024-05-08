@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <div class="image-container">
+                <img [src]="imagenActual" alt="Imagen del producto">
+            </div>
+            <div class="thumbnail-container d-flex justify-content-around">
+                <div class="thumbnail" *ngFor="let imagen of imagenes" (click)="cambiarImagen(imagen)">
+                    <img [src]="imagen" alt="Thumbnail">
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="container2 d-flex flex-column justify-content-start">
+                <h1 class="fw-bold fs-2 ">{{producto.nombre}}</h1>
+                <span class="fs-3 pb-5">{{producto.precio}}</span>
+                <h2 class="fw-bold fs-3">Descripcion</h2>
+                <p class="fs-4 pb-4">{{producto.descripcion}}</p>
+                <mat-divider></mat-divider>
+
+
+                <div class="form d-flex justify-content-around align-items-center">
+
+                    <h4 class="fs-4">Tallas</h4>
+                    <div>
+                        <mat-label class="fs-6">Selecciona una opcion</mat-label>
+                        <mat-select name="talla">
+                            @for (talla of producto.tallas; track talla) {
+                            <mat-option [value]="talla">{{talla}}</mat-option>
+                            }
+                        </mat-select>
+                    </div>
+                </div>
+
+                <div class="cantidad d-flex ">
+                    <input type="number" class="me-3">
+                    <button mat-flat-button color="primary">Añadir al carrito</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container m-2">
+    <div class="destacados">
+        <h2>Destacados</h2>
+    </div>
+
+    <div id="carouselExampleFade" class="carousel slide carousel-fade">
+        <div class="carousel-inner">
+            <div class="carousel-item active d-flex justify-content-around">
+                @for (producto of productos; track $index){
+                <app-card></app-card>
+                }
+            </div>
+            <div class="carousel-item d-flex justify-content-around">
+                @for (producto of productos; track $index){
+                <app-card></app-card>
+                }
+            </div>
+            <div class="carousel-item d-flex justify-content-around">
+                @for (producto of productos; track $index){
+                <app-card></app-card>
+                }
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+</div>
