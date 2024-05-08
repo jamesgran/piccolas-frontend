@@ -1,0 +1,12 @@
+.card{
+    width: 300px;
+    height: 600px;
+    border-style: none;
+}
+.botones{
+    text-align: center;
+    padding: 5px;
+}
+button{
+    margin: 8px;
+}
