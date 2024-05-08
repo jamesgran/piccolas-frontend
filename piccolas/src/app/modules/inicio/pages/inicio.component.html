@@ -1,12 +1,46 @@
-
 <div class="container">
-    <app-banner></app-banner>
-    <div class="about">
-        <h2>Acerca de nosotros</h2>
-        <p class="px-4">
-            Somos una empresa colombiana manufacturera y comercializadora de calzado, fundada en el 2007. Nos destacamos por la calidad y diseño de nuestros productos, lo que nos ha permitido trabajar con grandes marcas referentes en el país. 
-            ¡Queremos seguir vistiendo los pies de los Colombianos y próximamente los pies del mundo! <br>
-            <span>Gracias por hacer parte de este sueño</span>  
-        </p>
+  <app-banner></app-banner>
+  <div class="about">
+    <h2>Acerca de nosotros</h2>
+    <p class="px-4">
+      Somos una empresa colombiana manufacturera y comercializadora de calzado, fundada en el 2007. Nos destacamos por
+      la calidad y diseño de nuestros productos, lo que nos ha permitido trabajar con grandes marcas referentes en el
+      país.
+      ¡Queremos seguir vistiendo los pies de los Colombianos y próximamente los pies del mundo! <br>
+      <span>Gracias por hacer parte de este sueño</span>
+    </p>
+  </div>
+  <div class="destacados">
+    <h2>Destacados</h2>
+  </div>
+
+  <div id="carouselExampleFade" class="carousel slide carousel-fade">
+    <div class="carousel-inner">
+      <div class="carousel-item active d-flex justify-content-around">
+        @for (producto of productos; track $index){
+          <app-card></app-card>
+        }
+      </div>
+      <div class="carousel-item d-flex justify-content-around">
+        @for (producto of productos; track $index){
+          <app-card></app-card>
+        }
+      </div>
+      <div class="carousel-item d-flex justify-content-around">
+        @for (producto of productos; track $index){
+          <app-card></app-card>
+        }
+      </div>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
 </div>
