@@ -1,0 +1,22 @@
+.container{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.textcarrito{
+    font-weight: lighter;
+    padding-bottom: 8px;
+}
+.btn-pago {
+    background-color: #D06075;
+    color: #fff;
+    width: 170px;
+    border-radius: 15px;
+    height: 30px;
+    border-style: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-pago:hover{
+    background-color: #F28482 ;
+  }

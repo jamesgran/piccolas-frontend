@@ -1,0 +1,62 @@
+<div class="container d-flex justify-content-around mt-5">
+
+    <div>
+        <form [formGroup]="loginForm" (submit)="login()" class="container">
+            <h2>Acceder</h2>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email:</label>
+              <input type="text" id="email" formControlName="email" class="form-control" placeholder="Ingrese el Email" />
+            </div>
+        
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña:</label>
+              <input type="password" id="password" formControlName="password" class="form-control" placeholder="Ingrese la contraseña"/>
+            </div>
+          
+            <div class="col-auto">
+              <button type="submit" class="btn btn-primary mb-3">Iniciar sesion</button>
+            </div>
+        
+          </form>
+    </div>
+    <div>
+        <form [formGroup]="registroForm" (submit)="registro()" class="container">
+            <h2>Registrarse</h2>
+
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" id="nombre" formControlName="nombre" class="form-control" placeholder="Ingrese su nombre" />
+              </div>
+
+            <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido:</label>
+                <input type="text" id="apellido" formControlName="apellido" class="form-control" placeholder="Ingrese su apellido" />
+              </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email:</label>
+              <input type="text" id="email" formControlName="email" class="form-control" placeholder="Ingrese el Email" />
+            </div>
+        
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña:</label>
+              <input type="password" id="password" formControlName="password" class="form-control" placeholder="Ingrese la contraseña"/>
+            </div>
+
+            <div class="mb-3">
+                <label for="direccion" class="form-label">Direccion:</label>
+                <input type="text" id="direccion" formControlName="direccion" class="form-control" placeholder="Ingrese su direccion" />
+              </div>
+
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Telefono:</label>
+                <input type="telefono" id="telefono" formControlName="telefono" class="form-control" placeholder="Ingrese su telefono" />
+              </div>
+          
+            <div class="col-auto">
+              <button type="submit" class="btn mb-3">Registrarse</button>
+            </div>
+          </form>
+    </div>
+
+</div>
