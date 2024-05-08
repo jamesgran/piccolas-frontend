@@ -1,0 +1,31 @@
+
+footer{
+    width: 100vw;
+}
+.footer-box{
+    width: 300px;
+}
+.footer-box p{
+    color: #7D7D7D;
+}
+.container1{
+    background-color: #F7EDE2;
+    padding-top: 25px;
+}
+
+ul li{
+    list-style-type: none;
+    color: #F28482;
+}
+a{
+    text-decoration: none;
+    color: #7D7D7D;
+}
+.sub-footer{
+    background-color: #000000;
+    color: #F7EDE2;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

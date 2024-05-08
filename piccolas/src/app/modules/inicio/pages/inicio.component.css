@@ -1,0 +1,24 @@
+.container{
+    margin-top: 10px;
+    height: 200vh;
+    
+    border-style: none;
+    padding: 0;
+}
+.about{
+    margin-top: 40px;
+    text-align: center;
+    font-size: 15px;
+    
+}
+h2{
+    font-size: 25px;
+    color: #F28482;
+}
+p{
+    color: #7D7D7D;
+}
+span{
+    color: green;
+    font-weight: bold;
+}
