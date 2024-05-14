@@ -1,14 +1,10 @@
 <div class="container">
-
-    <mat-grid-list cols="4" rowHeight="500">
-        @for (item of pageItems; track $index){
-        <mat-grid-tile class="card"><app-card></app-card></mat-grid-tile>
+    <mat-grid-list cols="4" rowHeight="600">
+        @for (item of productos; track $index){
+        <mat-grid-tile class="card"><app-card [producto]="productos[$index]" ></app-card></mat-grid-tile>
         }
     </mat-grid-list>
-    <div class="botones">
-        <button mat-button (click)="goToPreviousPage()">Anterior</button>
-        <button mat-button (click)="goToNextPage()">Siguiente</button>
-    </div>
+    
 
 
 </div>

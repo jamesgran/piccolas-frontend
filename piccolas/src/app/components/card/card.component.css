@@ -6,7 +6,10 @@ mat-card-header{
   text-align: center;
 }
 mat-card-content{
+  display: flex;
   justify-content: center;
+  height: 350px;
+  align-items: center;
 }
 mat-card-actions{
     justify-content: center;
@@ -21,6 +24,7 @@ mat-card-actions{
 }
 img{
   width: 200px;
+  
 }
 button {
     background-color: #D06075;
@@ -30,8 +34,15 @@ button {
     height: 40px;
     border-style: none;
     transition: background-color 0.3s ease;
+    
   }
 
   button:hover{
     background-color: #F28482 ;
+  }
+  .card{
+    min-height: 50px;
+  }
+  mat-card-actions{
+    height: 100px;
   }

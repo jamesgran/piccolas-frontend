@@ -1,0 +1,12 @@
+<div class="container text-center">
+    <div class="m-2">
+        <div class="destacados">
+            <h2>Destacados</h2>
+            <br>
+        </div>
+        <mat-grid-list cols="4" rowHeight="550">
+            @for (item of productos; track $index){
+            <mat-grid-tile class="card"><app-card [producto]="productos[$index]" ></app-card></mat-grid-tile>
+            }
+        </mat-grid-list>    
+</div>

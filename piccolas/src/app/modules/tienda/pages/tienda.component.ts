@@ -1,9 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { CardComponent } from "../../../components/card/card.component";
 import {NgxPaginationModule} from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { Subscription } from 'rxjs';
+import { ProductoService } from '../../../services/producto/producto.service';
+import {PageEvent, MatPaginatorModule, MatPaginator} from '@angular/material/paginator';
+import { RouterModule } from '@angular/router';
+import { routes } from '../../../app.routes';
 @Component({
     selector: 'app-tienda',
     standalone: true,
@@ -14,33 +19,48 @@ import { MatButtonModule } from '@angular/material/button';
       CardComponent,
       NgxPaginationModule,
       CommonModule,
-      MatButtonModule
+      MatButtonModule,
+      MatPaginatorModule,
+      
     ]
 })
-export class TiendaComponent {
-  p: number = 1;
-  productos: any[]=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]
-  itemsPerPage = 16; // Cambia este valor según tus necesidades
-  currentPage = 1;
+export class TiendaComponent implements OnInit, OnDestroy{
+  productoSubscription: Subscription | undefined;
+  productos: any[]=[]
+ 
+  imagenes: any[] = []
 
-  get pageItems() {
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
-    return this.productos.slice(startIndex, endIndex);
+  constructor(
+    private productoService: ProductoService,
+  ){}
+
+  ngOnInit(): void {
+    this.cargarProductos();
+    //this.getImagenes();
   }
-
-  goToPreviousPage() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-    }
-  }
-
-  goToNextPage() {
-    if (this.currentPage < Math.ceil(this.productos.length / this.itemsPerPage)) {
-      this.currentPage++;
-    }
+  ngOnDestroy(): void {
+    this.productoSubscription?.unsubscribe();
   }
 
 
 
+  cargarProductos (){
+    this.productoSubscription = this.productoService.getProductos()
+    .subscribe((res : any) =>{
+      this.productos=res.resultados;
+    })
+
+
+
+  }
+/*   getImagenes(){
+    this.productoSubscription = this.productoService.getImagenes()
+    .subscribe((res : any) =>{
+      this.imagenes=res.resultados;
+    })
+
+  } */
+
+
+  
 }

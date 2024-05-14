@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { Router } from '@angular/router';
 import { RUTAS } from '../../core/enums/rutas.enum';
+import { Subscription } from 'rxjs';
+import { ProductoService } from '../../services/producto/producto.service';
 
 @Component({
   selector: 'app-card',
@@ -11,23 +13,38 @@ import { RUTAS } from '../../core/enums/rutas.enum';
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
-export class CardComponent {
-
+export class CardComponent implements OnInit{
+  productoSubscription: Subscription | undefined;
+  @Input() producto: any;
+  imagen = '';
   constructor(
-    private router: Router
+    private router: Router,
+    private productoService: ProductoService,
   ){
     
   }
-  data: any = 
-    {
-      nombre: 'Nombre del producto',
-      precio: '120.000',
-      foto: 'https://drive.google.com/file/d/1nu8r3WFi3RigzZho0mbUFbXede1yAJXw/view?usp=sharing'
-    }
+  ngOnInit(): void {
+   this.getImagen();
+  }
+ 
 
     verProducto(){
-      this.router.navigateByUrl(RUTAS.PRODUCTO)
+      
+      this.router.navigateByUrl(RUTAS.PRODUCTO + `/${this.producto.id_producto}`)
     }
+
+    getImagen(){
+      if (this.producto){
+        this.productoSubscription = this.productoService.getImagen(this.producto.id_producto)
+        .subscribe((res : any) =>{
+          this.imagen=res.resultados[0].url;
+          
+        })
+      }else{
+        console.log('you are here')
+      }
+
+    } 
 
   
 

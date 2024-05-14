@@ -1,10 +1,11 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes,  } from '@angular/router';
 import { InicioComponent } from './modules/inicio/pages/inicio.component';
 import { TiendaComponent } from './modules/tienda/pages/tienda.component';
 import { ProductoComponent } from './modules/producto/pages/producto.component';
 import { CarritoComponent } from './modules/carrito/pages/carrito.component';
 import { CuentaComponent } from './modules/cuenta/pages/login/cuenta.component';
 import { ContactoComponent } from './modules/contacto/pages/contacto.component';
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
   {
@@ -18,7 +19,7 @@ export const routes: Routes = [
     component: TiendaComponent,
   },
   {
-    path: 'producto',
+    path: 'producto/:id_producto',
     title: 'Producto',
     component: ProductoComponent,
   },

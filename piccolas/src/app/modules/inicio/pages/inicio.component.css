@@ -1,36 +1,41 @@
-.container{
+.container {
     margin-top: 10px;
-    height: 100em;
-    
+    height: 100%;
+
     border-style: none;
     padding: 0;
 }
-.about{
+
+.about {
     margin-top: 40px;
     text-align: center;
     font-size: 15px;
-    
+
 }
-.destacados{
+
+.destacados {
     text-align: center;
     margin-top: 3em;
     margin-bottom: 4em;
-    
+
 }
-h2{
+
+h2 {
     font-size: 25px;
     color: #F28482;
 }
-p{
+
+p {
     color: #7D7D7D;
 }
-span{
+
+span {
     color: green;
     font-weight: bold;
 }
 
-    /* Cambiar el color del icono de los controles */
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-      filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(1200deg) brightness(100%) contrast(150%);
-    }
+/* Cambiar el color del icono de los controles */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(1200deg) brightness(100%) contrast(150%);
+}

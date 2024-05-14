@@ -6,6 +6,7 @@
 }
 .image-container img{
     width: 300px;
+    margin-bottom: 50px;
 }
 .container2{
     padding-top: 4em;
@@ -25,14 +26,4 @@ input{
 .cantidad{
     margin-top: 20px;
     justify-content: center;
-}
-.destacados{
-    text-align: center;
-    margin-top: 3em;
-    margin-bottom: 4em;
-    
-}
-.destacados h2{
-    font-size: 35px;
-    color: #F28482;
 }
