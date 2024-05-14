@@ -19,24 +19,25 @@
                 <p class="fs-4 pb-4">{{producto.descripcion}}</p>
                 <mat-divider></mat-divider>
 
-
-                <div class="form d-flex justify-content-around align-items-center">
-
-                    <h4 class="fs-4">Tallas</h4>
-                    <div>
-                        <mat-label class="fs-6">Selecciona una opcion</mat-label>
-                        <mat-select name="talla">
-                            @for (talla of tallas; track talla) {
-                            <mat-option [value]="talla">{{talla}}</mat-option>
-                            }
-                        </mat-select>
+                <form [formGroup]="productoForm" (submit)="anadirAlCarrito()">
+                    <div class="form d-flex justify-content-around align-items-center">
+                        <h4 class="fs-4">Tallas</h4>
+                        <div>
+                            <mat-label class="fs-6">Selecciona una opcion</mat-label>
+                            <mat-select name="talla" formControlName="talla">
+                                @for (talla of tallas; track talla) {
+                                <mat-option [value]="talla">{{talla}}</mat-option>
+                                }
+                            </mat-select>
+                        </div>
                     </div>
-                </div>
+                    <div class="cantidad d-flex ">
+                        <input type="number" class="me-3" formControlName="cantidad">
+                        <button mat-flat-button color="primary">Añadir al carrito</button>
+                    </div>
+                </form>
+                
 
-                <div class="cantidad d-flex ">
-                    <input type="number" class="me-3" placeholder=1>
-                    <button mat-flat-button color="primary">Añadir al carrito</button>
-                </div>
 
             </div>
         </div>
