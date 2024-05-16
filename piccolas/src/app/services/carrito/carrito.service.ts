@@ -7,7 +7,7 @@ export class CarritoService {
   cartItems: any[] = []
   constructor() { }
   get cart(){
-    let cart: any[] = [];
+    let cart = [];
     let cartString = localStorage.getItem('carrito') || '';
     //parsear de nuevo a un array
     if(cartString){

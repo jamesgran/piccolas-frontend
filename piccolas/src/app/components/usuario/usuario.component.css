@@ -1,4 +1,4 @@
-button {
+.btn {
     background-color: #D06075;
     color: #fff;
     width: 170px;
@@ -6,9 +6,16 @@ button {
     height: 40px;
     border-style: none;
     transition: background-color 0.3s ease;
+    
   }
 
-  button:hover{
+  .btn:hover{
     background-color: #F28482 ;
   }
-  
+  .form{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .form mat-form-field{
+    margin-right: 10px;
+  }

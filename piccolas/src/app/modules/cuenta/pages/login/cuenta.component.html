@@ -1,23 +1,13 @@
-<div class="container d-flex justify-content-around mt-5">
 
+<div *ngIf="hayUsuario; else elseBlock">
+  <div class="container mt-5">
+    <app-usuario></app-usuario>
+  </div>
+</div>
+<ng-template #elseBlock>
+  <div class="container d-flex justify-content-around mt-5">
     <div>
-        <form [formGroup]="loginForm" (submit)="login()" class="container">
-            <h2>Acceder</h2>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email:</label>
-              <input type="text" id="email" formControlName="email" class="form-control" placeholder="Ingrese el Email" />
-            </div>
-        
-            <div class="mb-3">
-              <label for="password" class="form-label">Contraseña:</label>
-              <input type="password" id="password" formControlName="password" class="form-control" placeholder="Ingrese la contraseña"/>
-            </div>
-          
-            <div class="col-auto">
-              <button type="submit" class="btn btn-primary mb-3">Iniciar sesion</button>
-            </div>
-        
-          </form>
+      <app-autenticacion></app-autenticacion>
     </div>
     <div>
         <form [formGroup]="registroForm" (submit)="registro()" class="container">
@@ -60,3 +50,9 @@
     </div>
 
 </div>
+
+</ng-template>
+
+
+
+

@@ -1,0 +1,33 @@
+<div>
+    <form [formGroup]="loginForm" (submit)="realizoLogin()" class="container">
+        <h2>Acceder</h2>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email:</label>
+          <input type="text" id="email" formControlName="email" class="form-control" placeholder="Ingrese su Email" />
+          @if (login?.invalid && login?.touched) {
+            <div>
+                <small class="text-danger">El nombre de usuario es obligatorio</small>
+            </div>
+        }
+        </div>
+    
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña:</label>
+          <input type="password" id="password" formControlName="password" class="form-control" placeholder="Ingrese la contraseña"/>
+          @if (password?.invalid && password?.touched) {
+            <div>
+                <small class="text-danger">La contraseña es obligatoria </small>
+
+                @if (password?.hasError('minlength')) {
+                    <small class="text-danger">La contraseña no tiene la longitud minima</small>
+                }
+            </div>
+        }
+        </div>
+      
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3">Iniciar sesion</button>
+        </div>
+    
+      </form>
+</div>

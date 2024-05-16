@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -7,21 +7,29 @@ import {
 } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { RegistroService } from '../../../../services/registro/registro.service';
-import { error } from 'console';
+import { AutenticacionComponent } from "../../../../auth/autenticacion/autenticacion.component";
+import { UsuarioComponent } from "../../../../components/usuario/usuario.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-cuenta',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './cuenta.component.html',
-  styleUrl: './cuenta.component.css',
+    selector: 'app-cuenta',
+    standalone: true,
+    templateUrl: './cuenta.component.html',
+    styleUrl: './cuenta.component.css',
+    imports: [
+      ReactiveFormsModule,
+       AutenticacionComponent,
+       UsuarioComponent,
+       CommonModule
+      ]
 })
-export class CuentaComponent {
+export class CuentaComponent implements OnInit{
+  ngOnInit(): void {
+    this.validarLogin()
+  }
   registroService = inject(RegistroService);
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required),
-  });
+
+  hayUsuario: boolean = false;
 
   registroForm = new FormGroup({
     nombre: new FormControl('', Validators.required),
@@ -32,14 +40,10 @@ export class CuentaComponent {
     telefono: new FormControl('', Validators.required),
   });
 
-  login() {
-    Swal.fire({
-      icon: 'success',
-      title: 'Se ha logueado correctamente',
-      showConfirmButton: true,
-      timer: 1500,
-    });
+  get token(){
+    return localStorage.getItem('token') || '';
   }
+
 
   registro() {
     let usuario: any = {};
@@ -72,6 +76,12 @@ export class CuentaComponent {
           });
         }
       );
+    }
+  }
+  validarLogin()
+  {
+    if(this.token){
+      this.hayUsuario=true
     }
   }
 }

@@ -20,3 +20,8 @@
   .btn-pago:hover{
     background-color: #F28482 ;
   }
+  a{
+    text-decoration: none;
+    color: inherit;
+  
+  }

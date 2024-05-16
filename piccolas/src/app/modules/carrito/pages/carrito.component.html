@@ -39,15 +39,31 @@
 </div>
 <div class="container d-flex justify-content-between text-start">
     <div></div>
-    <div class="d-flex flex-column fs-5 ">
-        <h2 class="textcarrito">TOTAL DEL CARRITO</h2>
-        <label class="textcarrito">Subtotal: <span>{{getTotal()}}</span></label>
-        <label class="textcarrito">Envio Fijo: <span>{{envio}}</span></label>
-        <a class="textcarrito" href="#"> ¿Actualizar Direccion?</a>
-        <br>
-        <br>
-        <label class="textcarrito">Total: {{getTotal() + envio}}</label>
-        <button class="btn-pago">Ir a pagos</button>
-    </div>
+    
+        <div class="d-flex flex-column fs-5 ">
+            <h2 class="textcarrito">TOTAL DEL CARRITO</h2>
+            <label class="textcarrito">Subtotal: <span>{{getTotal()}}</span></label>
+            <label class="textcarrito">Envio Fijo: <span>{{envio}}</span></label>
+            <a class="textcarrito" href="#"> ¿Actualizar Direccion?</a>
+            <br>
+            <br>
+            <label class="textcarrito">Total: {{getTotal() + envio}}</label>
+            <div *ngIf="hayUsuario; else elseBlock">
+                <button class="btn-pago" (click)="crearPedido()">Ir a pagos</button>
+            </div>
+            <ng-template #elseBlock>
+                <br>
+                <label class="textcarrito">Debes iniciar session para hacer checkout</label>
+                <button class="btn-pago"><a routerLink="../cuenta">Iniciar Sesion</a></button>
+            </ng-template>
+            
+        </div>
+    
+    
+    
+
+
+
+
 
 </div>
