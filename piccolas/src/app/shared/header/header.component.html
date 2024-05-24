@@ -9,6 +9,10 @@
         <a [routerLink]="RUTAS.CARRITO">Carrito</a>
         <a [routerLink]="RUTAS.CONTACTO">Contacto</a>
         <a [routerLink]="RUTAS.CUENTA">Cuenta</a>
+        <div *ngIf="hayUsuario">
+            <button (click)="cerrarSesion()">Cerrar sesion</button>
+        </div>
+        
       </nav> 
 
 </header>

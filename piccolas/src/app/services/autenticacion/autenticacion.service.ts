@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { environment } from '../../../environments/configuracion/environment';
 import { Observable, catchError, map, of, tap } from 'rxjs';
 import { UsuarioModel } from '../../core/models/usuario.model';
+import { RUTAS } from '../../core/enums/rutas.enum';
 const base_url = environment.base_url;
 @Injectable({
   providedIn: 'root',
@@ -74,6 +75,7 @@ export class AutenticacionService {
 
   logout() {
     localStorage.removeItem('token');
-    //this.router.navigateByUrl(RUTAS.AUTENTICACION)
+    localStorage.removeItem('usuario')
+    this.router.navigateByUrl(RUTAS.INICIO)
   }
 }

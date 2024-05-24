@@ -27,8 +27,6 @@ header {
     top: 200px; /* Espacio para el logo */
     justify-content: center;
     
-    
-    
   }
   
   nav a {
@@ -43,6 +41,19 @@ header {
   nav a:hover {
     background-color: #F28482;
     color: #fff;
+  }
+  button {
+    background-color: #D06075;
+    color: #fff;
+    width: 100px;
+    border-radius: 15px;
+    height: 40px;
+    border-style: none;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover{
+    background-color: #F28482 ;
   }
   
 /*   @media (max-width: 768px) {
