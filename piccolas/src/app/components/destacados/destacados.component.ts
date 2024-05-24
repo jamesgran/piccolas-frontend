@@ -16,7 +16,7 @@ ngOnInit(): void {
   this.cargarDestacados()
 }
 productoService = inject(ProductoService)
-productos: any;
+productos: any[] = []
 
 
 cargarDestacados(){

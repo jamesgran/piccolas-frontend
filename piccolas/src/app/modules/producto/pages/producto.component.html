@@ -33,7 +33,7 @@
                     </div>
                     <div class="cantidad d-flex ">
                         <input type="number" class="me-3" formControlName="cantidad">
-                        <button mat-flat-button color="primary">Añadir al carrito</button>
+                        <button mat-flat-button color="primary" [disabled]="!productoForm.valid">Añadir al carrito</button>
                     </div>
                 </form>
                 

@@ -37,7 +37,7 @@ export class CardComponent implements OnInit{
       if (this.producto){
         this.productoSubscription = this.productoService.getImagen(this.producto.id_producto)
         .subscribe((res : any) =>{
-          this.imagen=res.resultados[0].url;
+          this.imagen=res.resultados[0]?.url;
           
         })
       }else{

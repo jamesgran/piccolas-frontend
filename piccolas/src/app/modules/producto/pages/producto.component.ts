@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductoService } from '../../../services/producto/producto.service';
 import { DestacadosComponent } from '../../../components/destacados/destacados.component';
 import { CarritoService } from '../../../services/carrito/carrito.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-producto',
@@ -51,11 +52,6 @@ export class ProductoComponent {
     cantidad: new FormControl('1',[Validators.min(1), Validators.required]),
   })
 
-
-
-
-
-
   cambiarImagen(imagen: string): void {
     // Cambia la imagen actual al hacer clic en una miniatura
     this.imagenActual = imagen;
@@ -89,13 +85,33 @@ export class ProductoComponent {
   }
 
   anadirAlCarrito(){
-   let productoAnadido = {
-      id_producto: this.producto.id_producto,
-      nombre: this.producto.nombre,
-      precio: this.producto.precio_venta,
-      cantidad: this.productoForm.value.cantidad,
-      talla: this.productoForm.value.talla
+
+    try {
+
+      let productoAnadido = {
+        id_producto: this.producto.id_producto,
+        nombre: this.producto.nombre,
+        precio: this.producto.precio_venta,
+        cantidad: this.productoForm.value.cantidad,
+        talla: this.productoForm.value.talla
+      }
+      this.carritoService.anadirAlCarrito(productoAnadido)
+      Swal.fire({
+        icon: 'success',
+        title: 'Se ha añadido al carrito correctamente',
+        showConfirmButton: true,
+        timer: 3000
+      });
+      
+    } catch (error) {
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Contactese con el administador',
+        showConfirmButton: true
+      })
+      console.error('error: ', error)
     }
-    this.carritoService.anadirAlCarrito(productoAnadido)
+   
   }
 }

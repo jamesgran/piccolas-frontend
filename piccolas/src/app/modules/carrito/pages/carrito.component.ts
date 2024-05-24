@@ -26,10 +26,14 @@ import { error } from 'console';
   styleUrl: './carrito.component.css',
 })
 export class CarritoComponent implements OnInit {
+  //Banderas
   hayUsuario: boolean = false;
+  hayCarrito: boolean = false;
+
   ngOnInit(): void {
     this.getCart();
     this.validarLogin();
+    this.validarCarrito();
   }
   get token() {
     return localStorage.getItem('token') || '';
@@ -37,6 +41,10 @@ export class CarritoComponent implements OnInit {
 
   get usuario() {
     return localStorage.getItem('usuario') || '';
+  }
+
+  get carrito(){
+    return localStorage.getItem('carrito');
   }
   carritoService = inject(CarritoService);
   pedidoService = inject(PedidoService);
@@ -66,6 +74,12 @@ export class CarritoComponent implements OnInit {
   validarLogin() {
     if (this.token) {
       this.hayUsuario = true;
+    }
+  }
+
+  validarCarrito(){
+    if(this.carrito){
+      this.hayCarrito= true;
     }
   }
 
