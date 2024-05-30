@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID, inject } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import { RegistroService } from '../../../../services/registro/registro.service';
 import { AutenticacionComponent } from "../../../../auth/autenticacion/autenticacion.component";
 import { UsuarioComponent } from "../../../../components/usuario/usuario.component";
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
     selector: 'app-cuenta',
@@ -24,6 +24,11 @@ import { CommonModule } from '@angular/common';
       ]
 })
 export class CuentaComponent implements OnInit{
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object
+  ){
+
+  }
   ngOnInit(): void {
     this.validarLogin()
   }
@@ -41,7 +46,11 @@ export class CuentaComponent implements OnInit{
   });
 
   get token(){
-    return localStorage.getItem('token') || '';
+    if(isPlatformBrowser(this.platformId)){
+      return localStorage.getItem('token') || '';
+    }
+    return null
+    
   }
 
 

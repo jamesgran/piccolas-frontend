@@ -1,15 +1,14 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID, inject } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { CarritoService } from '../../../services/carrito/carrito.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Pedido } from '../../../core/interfaces/pedido.interface';
 import { PedidoService } from '../../../services/pedido/pedido.service';
 import Swal from 'sweetalert2';
-import { error } from 'console';
 
 @Component({
   selector: 'app-carrito',
@@ -30,21 +29,38 @@ export class CarritoComponent implements OnInit {
   hayUsuario: boolean = false;
   hayCarrito: boolean = false;
 
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object
+  ){
+  }
+
   ngOnInit(): void {
     this.getCart();
     this.validarLogin();
     this.validarCarrito();
   }
   get token() {
-    return localStorage.getItem('token') || '';
+    if(isPlatformBrowser(this.platformId)){
+      return localStorage.getItem('token') || '';
+    }
+    return null
+    
   }
 
   get usuario() {
-    return localStorage.getItem('usuario') || '';
+
+    if(isPlatformBrowser(this.platformId)){
+      return localStorage.getItem('usuario') || '';
+    }
+    return null
   }
 
   get carrito(){
-    return localStorage.getItem('carrito');
+    if(isPlatformBrowser(this.platformId)){
+      return localStorage.getItem('carrito');
+    }
+    return null
+    
   }
   carritoService = inject(CarritoService);
   pedidoService = inject(PedidoService);
@@ -80,6 +96,16 @@ export class CarritoComponent implements OnInit {
   validarCarrito(){
     if(this.carrito){
       this.hayCarrito= true;
+    }
+  }
+
+  eliminarDelCarrito(element: any){
+    let arrayFiltrado = this.productos.filter(item => item.id_producto !== element.id_producto)
+    this.productos = arrayFiltrado
+    localStorage.setItem('carrito', JSON.stringify(this.productos))
+    if(this.productos[0] == undefined){
+      localStorage.removeItem('carrito')
+      window.location.reload()
     }
   }
 

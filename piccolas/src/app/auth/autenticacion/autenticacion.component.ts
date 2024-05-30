@@ -2,6 +2,8 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AutenticacionService } from '../../services/autenticacion/autenticacion.service';
+import { Router } from '@angular/router';
+import { RUTAS } from '../../core/enums/rutas.enum';
 
 @Component({
   selector: 'app-autenticacion',
@@ -12,6 +14,11 @@ import { AutenticacionService } from '../../services/autenticacion/autenticacion
 })
 export class AutenticacionComponent {
   autenticacionService = inject(AutenticacionService);
+  constructor(
+    private router: Router
+  ){
+
+  }
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -38,7 +45,7 @@ export class AutenticacionComponent {
           Swal.fire({
             html: `Bienvenido ${resp.usuario[0].nombre}`,
           }).then(() => {
-            //this.router.navigateByUrl(RUTAS.CLIENTES);
+            window.location.reload()
           });
         }
       },

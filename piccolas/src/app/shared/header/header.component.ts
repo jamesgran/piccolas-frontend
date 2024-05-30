@@ -1,8 +1,8 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, Inject, OnInit, PLATFORM_ID, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { RUTAS } from '../../core/enums/rutas.enum';
 import { ScrollService } from '../../services/scroll/scroll.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { AutenticacionService } from '../../services/autenticacion/autenticacion.service';
 import Swal from 'sweetalert2';
 
@@ -19,6 +19,14 @@ export class HeaderComponent implements OnInit{
   scrollService = inject(ScrollService)
   autenticacionService = inject(AutenticacionService)
 
+  constructor(
+    //solucion para error window is not defined
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private router: Router
+  ){
+    
+  }
+
   ngOnInit(): void {
     //funcion para que el scroll se ubique en el top con cada cambio del router
     this.scrollService.setScrollTopOnRouterEvents()
@@ -29,7 +37,10 @@ export class HeaderComponent implements OnInit{
     return RUTAS;
   }
   get usuario(){
-    return localStorage.getItem('usuario')
+    if(isPlatformBrowser(this.platformId)){
+      return localStorage.getItem('usuario');
+    }
+    return null;
   }
 
   validarLogin(){
@@ -39,12 +50,15 @@ export class HeaderComponent implements OnInit{
   }
   cerrarSesion(){
     this.autenticacionService.logout()
+    this.router.navigateByUrl('')
     Swal.fire({
       icon: "info",
       text: "Se ha cerrado sesion correctamente",
-      showConfirmButton: true
+      showConfirmButton: true,
+      timer: 2000
     });
+    
+    
   
   }
-
 }

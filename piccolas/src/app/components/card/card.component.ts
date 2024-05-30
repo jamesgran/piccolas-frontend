@@ -5,11 +5,12 @@ import { Router } from '@angular/router';
 import { RUTAS } from '../../core/enums/rutas.enum';
 import { Subscription } from 'rxjs';
 import { ProductoService } from '../../services/producto/producto.service';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule],
+  imports: [MatCardModule, MatButtonModule, CurrencyPipe],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })

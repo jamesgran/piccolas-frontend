@@ -1,21 +1,29 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarritoService {
   cartItems: any[] = []
-  constructor() { }
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) { }
   get cart(){
     let cart = [];
-    let cartString = localStorage.getItem('carrito') || '';
-    //parsear de nuevo a un array
-    if(cartString){
-      cart = JSON.parse(cartString)
-      return cart
-    }else{
-      return [undefined]
+    if(isPlatformBrowser(this.platformId)){
+      var cartString = localStorage.getItem('carrito') || '';
+      
+      //parsear de nuevo a un array
+      if(cartString){
+        cart = JSON.parse(cartString)
+        return cart
+      }else{
+        return [undefined]
+      }
     }
+    
+    
   
     
   }

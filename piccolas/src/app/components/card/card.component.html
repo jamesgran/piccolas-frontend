@@ -1,7 +1,7 @@
 <mat-card class="card">
     <mat-card-header>
       <mat-card-title class="titulo">{{producto.nombre}}</mat-card-title>
-      <mat-card-subtitle class="subtitulo">{{producto.precio_venta}}</mat-card-subtitle>
+      <mat-card-subtitle class="subtitulo">{{producto.precio_venta | currency:'COP':'symbol':'1.0-0'  }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <img mat-card-image [src]= 'imagen' alt="Photo of a Shib Inu">
