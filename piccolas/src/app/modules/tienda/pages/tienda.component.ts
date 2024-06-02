@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { CardComponent } from "../../../components/card/card.component";
-import {NgxPaginationModule} from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { Subscription } from 'rxjs';
@@ -17,7 +16,6 @@ import { routes } from '../../../app.routes';
     imports: [
       MatGridListModule, 
       CardComponent,
-      NgxPaginationModule,
       CommonModule,
       MatButtonModule,
       MatPaginatorModule,

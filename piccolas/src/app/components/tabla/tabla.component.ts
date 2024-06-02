@@ -3,7 +3,6 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { PedidoService } from '../../services/pedido/pedido.service';
-import { error } from 'console';
 import Swal from 'sweetalert2';
 
 

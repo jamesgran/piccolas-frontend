@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { MailService } from '../../../services/mail/mail.service';
-import { error } from 'console';
 
 @Component({
   selector: 'app-contacto',
